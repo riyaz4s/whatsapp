@@ -9,7 +9,7 @@ enum TabIndex {
 
 class SwitchTabsModel extends ChangeNotifier {
 
-  TabIndex _currentTabIndex;
+  TabIndex _currentTabIndex = TabIndex.CHATS;
   TabIndex get currentTabIndex => _currentTabIndex;
 
   updateTabIndex (TabIndex index) {
