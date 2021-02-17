@@ -32,7 +32,7 @@ class ChatListState extends State<ChatList> {
             },
           );
         } else {
-          return CircularProgressIndicator();
+          return Column(mainAxisAlignment: MainAxisAlignment.center, children: [CircularProgressIndicator()]);
         }
         
       },
