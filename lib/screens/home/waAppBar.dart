@@ -1,18 +1,11 @@
-import 'package:ChatApp/models/switchTabsModel.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-class WaAppBar extends StatefulWidget implements PreferredSizeWidget {
-  @override
-  _WaAppBarState createState() => _WaAppBarState();
-
+class WaAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => new Size.fromHeight(100.0);
-}
 
-class _WaAppBarState extends State<WaAppBar>
-    with SingleTickerProviderStateMixin {
-  TabController _tabController;
+  final TabController tabController;
+
   static const List<Widget> _tabs = [
     Tab(icon: Icon(Icons.camera_alt)),
     Tab(text: "CHATS"),
@@ -34,23 +27,14 @@ class _WaAppBarState extends State<WaAppBar>
     )
   ];
 
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(
-        vsync: this, initialIndex: TabIndex.CHATS.index, length: _tabs.length);
-    _tabController.addListener(() {
-      Provider.of<SwitchTabsModel>(context, listen: false)
-          .updateTabIndex(TabIndex.values[_tabController.index]);
-    });
-  }
+  WaAppBar({ @required this.tabController});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       title: Text('WhatsApp', style: TextStyle(color: Color(0xFF9EA5AA))),
       bottom: TabBar(
-          controller: _tabController,
+          controller: tabController,
           indicatorColor: new Color(0xFF07AB96),
           labelColor: new Color(0xFF07AB96),
           unselectedLabelColor: new Color(0xFF9EA5AA),

@@ -1,5 +1,8 @@
-import 'package:ChatApp/screens/home/home.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'models/switchTabsModel.dart';
+import 'screens/home/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +19,10 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
       ),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: ChangeNotifierProvider(
+        create: (context) => SwitchTabsModel(),
+        child: HomePage(),
+      ),
     );
   }
 }

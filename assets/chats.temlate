@@ -1,0 +1,16 @@
+
+
+[
+  '{{repeat(5, 15)}}',
+  {
+    "name": '{{firstName()}} {{surname()}}',
+    "read": '{{bool()}}',
+    "avatarUrl": "https://i.pravatar.cc/150?img={{integer(1, 10)}}",
+    "date": '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss Z")}}',
+    "message": {
+      "message": '{{lorem(1, "paragraphs")}}',
+      "status": '{{integer(0, 3)}}'
+    }
+  }
+
+]
