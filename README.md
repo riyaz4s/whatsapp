@@ -1,6 +1,8 @@
 # ChatApp
 
-A new Flutter project.
+A whatsapp skeleton 
+
+[Demo](https://riyaz4s.github.io/whatsapp_flutter_web/#/)
 
 ## Getting Started
 
