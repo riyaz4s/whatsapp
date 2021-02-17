@@ -1,10 +1,10 @@
-import 'package:ChatApp/models/chatModel.dart';
+import 'package:ChatApp/models/callModel.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
-class ChatTile extends StatelessWidget {
-  final ChatModel chat;
-  ChatTile({@required this.chat});
+class CallTile extends StatelessWidget {
+  final CallModel call;
+  CallTile({@required this.call});
 
   int calculateDifference(DateTime date) {
     DateTime now = DateTime.now();
@@ -30,14 +30,12 @@ class ChatTile extends StatelessWidget {
       contentPadding: EdgeInsets.all(8.0),
       leading: CircleAvatar(
         radius: 30,
-        backgroundImage: AssetImage(chat.avatarUrl),
+        backgroundImage: AssetImage(call.avatarUrl),
         backgroundColor: Colors.transparent,
       ),
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text(chat.name, overflow: TextOverflow.ellipsis), Text(parseDateTime(chat.date), textScaleFactor: 0.75,)]
-        ),
-      subtitle: Text(chat.message.message, overflow: TextOverflow.ellipsis),
+      title: Text(call.name, overflow: TextOverflow.ellipsis),
+      subtitle: Text(DateFormat('dd MMMM, hh:mm').format(call.date)),
+      trailing: call.type == CallType.AUDIO ? Icon(Icons.phone, color: Color(0xFF00AF9D) ): Icon(Icons.videocam, color: Color(0xFF00AF9D)),
     );
   }
 }

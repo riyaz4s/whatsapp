@@ -1,27 +1,27 @@
 import 'package:ChatApp/api_client/api.dart';
-import 'package:ChatApp/models/chatModel.dart';
-import 'package:ChatApp/screens/home/tabview/chatPage/chatTile.dart';
+import 'package:ChatApp/models/callModel.dart';
+import 'package:ChatApp/screens/home/tabview/callsPage/callTile.dart';
 import 'package:flutter/material.dart';
 
-class ChatList extends StatefulWidget {
+class CallList extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return ChatListState();
+    return CallListState();
   }
 }
 
-class ChatListState extends State<ChatList> {
-  Future<List<ChatModel>> futureChats;
+class CallListState extends State<CallList> {
+  Future<List<CallModel>> futureCalls;
 
   void initState() {
     super.initState();
-    futureChats = fetchChats();
+    futureCalls = fetchCalls();
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<ChatModel>>(
-      future: futureChats,
+    return FutureBuilder<List<CallModel>>(
+      future: futureCalls,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return Container(
@@ -31,7 +31,7 @@ class ChatListState extends State<ChatList> {
               itemCount: snapshot.data.length,
               itemBuilder: (context, index) {
                 return Stack(
-                  children: [ChatTile(chat: snapshot.data[index]), Divider( indent: 80.0 )],
+                  children: [CallTile(call: snapshot.data[index]), Divider( indent: 80.0 )],
                 );
               },
             ),

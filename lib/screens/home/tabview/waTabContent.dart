@@ -1,3 +1,4 @@
+import 'package:ChatApp/screens/home/tabview/callsPage/callList.dart';
 import 'package:ChatApp/screens/home/tabview/chatPage/chatList.dart';
 import 'package:flutter/material.dart';
 
@@ -13,13 +14,13 @@ class WaTabContent extends StatelessWidget {
   Widget build(BuildContext context) {
     switch(tabIndex) {
       case TabIndex.CAMERA:
-        return Icon(Icons.directions_car);
+        return Icon(Icons.warning_amber_rounded);
       case TabIndex.CHATS:
         return ChatList();
       case TabIndex.STATUS:
-        return Icon(Icons.directions_bike);
+        return Icon(Icons.warning_amber_rounded);
       case TabIndex.CALLS:
-        return Icon(Icons.directions_car);
+        return CallList();
       default:
         return new Container(width: 0, height: 0);
     }
