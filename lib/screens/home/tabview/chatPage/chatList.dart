@@ -9,9 +9,9 @@ class ChatList extends StatefulWidget {
     return ChatListState();
   }
 }
-class ChatListState extends State<ChatList> {
 
- Future<List<ChatModel>> futureChats;
+class ChatListState extends State<ChatList> {
+  Future<List<ChatModel>> futureChats;
 
   void initState() {
     super.initState();
@@ -23,21 +23,23 @@ class ChatListState extends State<ChatList> {
     return FutureBuilder<List<ChatModel>>(
       future: futureChats,
       builder: (context, snapshot) {
-        if(snapshot.hasData) {
-          return ListView.builder(
-            itemExtent: 80,
-            itemCount: snapshot.data.length,
-            itemBuilder: (context, index) {
+        if (snapshot.hasData) {
+          return Container(
+            color: Color(0xFF101E25),
+            child: ListView.builder(
+              itemExtent: 80,
+              itemCount: snapshot.data.length,
+              itemBuilder: (context, index) {
                 return ChatTile(chat: snapshot.data[index]);
-            },
+              },
+            ),
           );
         } else {
-          return Column(mainAxisAlignment: MainAxisAlignment.center, children: [CircularProgressIndicator()]);
+          return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [CircularProgressIndicator()]);
         }
-        
       },
-
     );
   }
-
 }
